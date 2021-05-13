@@ -9,12 +9,8 @@ services:
             - HIVEMQ_CONTROL_CENTER_PASSWORD=test
         ports:
             - "1883:1883"
-            - "8080:8080"
     mongodb:
         image: mongo
         container_name: mongodb
-        environment:
-            - MONGO_INITDB_ROOT_USERNAME=test
-            - MONGO_INITDB_ROOT_PASSWORD=test
         ports:
             - "27017:27017"
