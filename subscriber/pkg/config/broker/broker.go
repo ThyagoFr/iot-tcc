@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func NewMQTTClient(conf *Config) (mqtt.Client,error){
+func NewMQTTClient(conf *Config) (mqtt.Client, error) {
 	options := mqtt.NewClientOptions()
 	options.AddBroker(conf.DNS())
 	options.SetUsername(conf.User)
@@ -16,7 +16,7 @@ func NewMQTTClient(conf *Config) (mqtt.Client,error){
 	for !testConnection.WaitTimeout(5 * time.Second) {
 	}
 	if err := testConnection.Error(); err != nil {
-		return nil,err
+		return nil, err
 	}
 	return client, nil
 }

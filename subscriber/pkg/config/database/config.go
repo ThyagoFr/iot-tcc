@@ -6,10 +6,10 @@ import (
 )
 
 type Config struct {
-	Host string
-	Port int
+	Host     string
+	Port     int
 	Database string
-	User string
+	User     string
 	Password string
 }
 
