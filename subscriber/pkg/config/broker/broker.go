@@ -11,6 +11,8 @@ func NewMQTTClient(conf *Config) (mqtt.Client, error) {
 	options.SetUsername(conf.User)
 	options.SetPassword(conf.Password)
 	options.SetClientID(conf.ClientID)
+	options.AutoReconnect = true
+	options.ConnectRetry = true
 	client := mqtt.NewClient(options)
 	testConnection := client.Connect()
 	for !testConnection.WaitTimeout(5 * time.Second) {
