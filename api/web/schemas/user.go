@@ -18,8 +18,8 @@ type CreateUserRequest struct {
 
 func (create *CreateUserRequest) ToModel() *entity.User {
 	return &entity.User{
-		Name: create.Name,
-		Email: create.Email,
+		Name:     create.Name,
+		Email:    create.Email,
 		Password: create.Password,
 	}
 }
@@ -33,10 +33,10 @@ type UserResponse struct {
 
 func ToUserResponse(model *entity.User) *UserResponse {
 	return &UserResponse{
-		ID: model.ID,
-		Email: model.Email,
+		ID:        model.ID,
+		Email:     model.Email,
 		CreatedAt: model.CreatedAt,
-		Name: model.Name,
+		Name:      model.Name,
 	}
 }
 

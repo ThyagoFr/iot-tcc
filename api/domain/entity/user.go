@@ -20,11 +20,11 @@ var (
 )
 
 type User struct {
-	gorm.Model    `json:"-"`
-	ID            string              `gorm:"type:uuid;primarykey"`
-	Email    string
-	Name     string
-	Password string
+	gorm.Model `json:"-"`
+	ID         string `gorm:"type:uuid;primarykey"`
+	Email      string
+	Name       string
+	Password   string
 }
 
 func (u *User) HashPassword() error {

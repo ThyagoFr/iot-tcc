@@ -2,7 +2,7 @@ package crypt
 
 import "golang.org/x/crypto/bcrypt"
 
-type Crypt struct {}
+type Crypt struct{}
 
 // Hash - HashPassword
 func (c *Crypt) Hash(password string) (string, error) {
@@ -11,7 +11,7 @@ func (c *Crypt) Hash(password string) (string, error) {
 }
 
 // Check - CheckPasswordHash
-func (c *Crypt)  Check(password, hash string) bool {
+func (c *Crypt) Check(password, hash string) bool {
 	err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))
 	return err == nil
 }

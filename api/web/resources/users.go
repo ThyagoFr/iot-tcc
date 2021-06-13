@@ -11,7 +11,7 @@ type Users struct {
 	service user.Service
 }
 
-func(u *Users) Register() fiber.Handler {
+func (u *Users) Register() fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
 		request := new(schemas.CreateUserRequest)
 		err := ctx.BodyParser(request)
@@ -27,7 +27,7 @@ func(u *Users) Register() fiber.Handler {
 	}
 }
 
-func(u *Users) Login() fiber.Handler {
+func (u *Users) Login() fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
 		request := new(schemas.LoginRequest)
 		err := ctx.BodyParser(request)
@@ -38,7 +38,7 @@ func(u *Users) Login() fiber.Handler {
 		if err != nil {
 			return fiber.ErrForbidden
 		}
-		token,err := security.GenerateToken(model.ID)
+		token, err := security.GenerateToken(model.ID)
 		if err != nil {
 			return fiber.ErrInternalServerError
 		}
