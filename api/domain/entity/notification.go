@@ -3,7 +3,8 @@ package entity
 import "gorm.io/gorm"
 
 type Notification struct {
-	gorm.Model
+	gorm.Model `json:"-"`
+	ID         string `gorm:"type:uuid;primarykey"`
 	DeviceID  string
 	UserID    string
 	Parameter string

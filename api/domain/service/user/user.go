@@ -1,7 +1,6 @@
 package user
 
 import (
-	"context"
 	"errors"
 	"fmt"
 	"github.com/thyagofr/tcc/api/domain/entity"
@@ -16,8 +15,7 @@ type User struct {
 }
 
 func (u *User) Register(user *entity.User) error {
-	ctx := context.Background()
-	_, err := u.repository.FindByEmail(ctx, user.Email)
+	_, err := u.repository.FindByEmail(user.Email)
 	if err == nil {
 		return domainErrors.ErrEmailAlreadyUsed
 	}
@@ -29,7 +27,7 @@ func (u *User) Register(user *entity.User) error {
 		return err
 	}
 	user.Password = hash
-	err = u.repository.Insert(ctx, user)
+	err = u.repository.Insert(user)
 	if err != nil {
 		return err
 	}
@@ -37,8 +35,7 @@ func (u *User) Register(user *entity.User) error {
 }
 
 func (u *User) Login(email, password string) (*entity.User, error) {
-	ctx := context.Background()
-	user, err := u.repository.FindByEmail(ctx, email)
+	user, err := u.repository.FindByEmail( email)
 	if err != nil {
 		return nil, err
 	}
