@@ -1,7 +1,9 @@
 package entity
 
+import "gorm.io/gorm"
+
 type Notification struct {
-	Entity
+	gorm.Model
 	DeviceID  string
 	UserID    string
 	Parameter string

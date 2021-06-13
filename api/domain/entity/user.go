@@ -5,6 +5,7 @@ import (
 
 	"github.com/pkg/errors"
 	"golang.org/x/crypto/bcrypt"
+	"gorm.io/gorm"
 )
 
 var (
@@ -19,7 +20,8 @@ var (
 )
 
 type User struct {
-	Entity
+	gorm.Model    `json:"-"`
+	ID            string              `gorm:"type:uuid;primarykey"`
 	Email    string
 	Name     string
 	Password string
